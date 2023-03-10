@@ -1,0 +1,75 @@
+<!--pages/order/transportDetail/transportDetail.wxml-->
+<!--物流信息主要部分-->
+    <view class='contain'>
+        <view class='driver'>
+            <view class='driver-image-contain'>
+                <image class='driver-image' src="{{driverUrl}}" binderror='onErrorSetImage'></image>
+            </view>
+
+            <!-- 配送中 -->
+            <view class='driver-content' wx:if="{{tipStatus==2}}">
+                <view class='driver-content-text'>
+                    <text class='driver-string'>{{orderString}}</text>
+                    <text class='driver-tip'>{{orderStringTip}}</text>
+                </view>
+                <view class='driver-content-btn' bindtap='contact'>
+                    <image src='../../../images/ic_address_phone.png'></image>
+                    <text>联系Ta</text>
+                </view>
+            </view>
+
+            <!-- 已评价 -->
+            <view class='driver-remark' wx:else>
+                <view class='grade-wrap'>
+                    <view class='grade-text' wx:if="{{tipStatus==3}}">默认评价</view>
+                    <view class='grade-text' wx:if="{{tipStatus==4}}">您的评价</view>
+                    <view class='grade'>
+                        <image wx:for="{{gradeBar}}" wx:index="index" wx:item="item" wx:key="id" src='../../../images/{{item}}.png'></image>
+                    </view>
+                </view>
+                <view class='remark'>
+                    {{driverInfo.appraiseList[0].remark}}
+                </view>
+                
+            </view>
+        
+        </view>
+        
+        <!-- 路线信息 -->
+        <view class='address-contain'>
+
+
+            
+            <!-- item -->
+            <view class='address-item' wx:for="{{driverInfo.operatList}}" wx:index="index" wx:item="item" wx:key="id">
+                <view class='time'>
+                    <view>{{item.monthDay}}</view>
+                    <view>{{item.hourMinuate}}</view>
+                </view>
+                <!-- 开始图标 -->
+                <view class='time-line' wx:if="{{index==0}}">
+                    <image class='icon' src='../../../images/address_passby.png'></image>
+                    <image class='line line-top'></image>
+                </view>
+                <!-- 中间图标 -->
+                <view class='time-line' wx:elif="{{index<driverInfo.operatList.length-1}}">
+                    <image class='icon' src='../../../images/address_passby.png'></image>
+                    <image class='line line-mid'></image>
+                </view>
+                <!-- 结束图标 -->
+                <view class='time-line' wx:else>
+                    <image class='icon' src='../../../images/time_line_dot.png'></image>
+                    <image class='line line-bottom'></image>
+                </view>
+
+                <view class='content'>
+                    <text class='title'>{{item.updatedetails}}</text>
+                    <text class='tip'>{{item.content?item.content:""}}</text>
+                    <view class='image-group'>
+                        <image wx:for="{{item.imgList}}" wx:index="imgIndex" wx:item="imgItem" wx:key="imgId" src='{{driverHost}}{{imgItem}}'></image>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>

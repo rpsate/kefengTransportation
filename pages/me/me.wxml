@@ -1,0 +1,120 @@
+<!--pages/me/me.wxml-->
+<view class='not-login-contain'>
+    <!--登录时显示-->
+    <view class='head-box' wx:if='{{isLogin}}'>
+        <view class='head' bindtap='reviseInfo'>
+            <image mode='aspectFill' class='head-image' src="{{headImage}}" binderror='onErrorHeadImage'></image>
+            <view class='head-info'>
+                <view class='head-info-text'>
+                    <text class='head-name'>{{userData.uname?userData.uname:'未填写'}}</text>
+                    <text class='head-phone'>{{userData.mobile?userData.mobile:'未填写'}}</text>
+                    <text class='head-company'>{{userData.customerName?userData.customerName:''}}</text>
+                </view>
+                <view class='head-info-icon'>
+                    <image src='../../images/next.png'></image>
+                </view>
+            </view>
+        </view>
+        <view class='head-words'> 
+            <image src='../../images/ic_me_tongji.png'></image>
+            <view>
+                <text>累计用车</text>
+                <text class='yellow'>{{useCarData.orderCount}}</text>
+                <text>次,里程</text>
+                <text class='yellow'>{{useCarData.toMileages}}</text>
+                <text>公里</text>
+                <text wx:if="{{isShowStr}}">,相当于绕地球</text>
+                <text wx:if="{{isShowStr}}" class='yellow'>{{useCarData.cylinder}}</text>
+                <text wx:if="{{isShowStr}}">圈</text>
+            </view>
+        </view>
+    </view>
+    <!--未登录时显示-->
+    <view class='head' wx:else>
+        <image src='../../images/user_img_default.png' class='head-image'>
+        </image>
+        <view class='head-login'>
+            <text class='head-tip'>未登录</text>
+            <text class='head-btn-login' bindtap='goToLogin'>立即登录</text>
+        </view>
+    </view>
+
+
+    <!--content-->
+    <view class='list-group'>
+        <!--item-->
+        <view class='list-item' bindtap='postOrder'>
+            <view class='list-item-title'>
+                <image src='../../images/ic_me_luxian.png' class='icon'></image>
+            <text>常用路线</text>
+            </view>
+            <view class='list-item-content'>
+                <text>快速下单</text>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+    </view>
+    
+    <view class='list-group'>
+        <!--item-->
+        <view class='list-item border-bottom' bindtap='gotoWebsite'>
+            <view class='list-item-title'>
+                <image src='../../images/ic_me_about.png' class='icon'></image>
+            <text>关于我们</text>
+            </view>
+            <view class='list-item-content'>
+                <text>官方网站</text>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+        <!--item-->
+        <view class='list-item border-bottom'>
+            <view class='list-item-title'>
+                <image src='../../images/ic_me_download.png' class='icon' ></image>
+                <text>下载APP</text>
+            </view>
+            <!-- 下载进度 -->
+            <view class='list-item-content' bindtap='downApp'>
+                <text>安卓版</text>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+            <!-- 下载 -->
+           
+            
+        </view>
+        <!--item-->
+        <view class='list-item' bindtap='callTel' data-tel='400-728-5056'>
+            <view class='list-item-title'>
+                <image src='../../images/ic_me_call.png' class='icon'></image>
+            <text>客服热线</text>
+            </view>
+            <view class='list-item-content'>
+                <text>400-728-5056</text>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+    </view>
+
+    <view class='list-group' wx:if="{{isLogin}}">
+        <!--item-->
+        <view class='list-item' bindtap='moreSetting'>
+            <view class='list-item-title'>
+                <image src='../../images/ic_me_setting.png' class='icon'></image>
+            <text>更多设置</text>
+            </view>
+            <view class='list-item-content'>
+                <view class='red-dot' wx:if="{{feedbackCount>0}}">{{feedbackCount}}</view>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+<!-- 二维码 -->
+<!--用车数量-->
+<modal hidden="{{!isShowDownCode}}" title="使用QQ或浏览器扫码下载" confirm-text="保存二维码" bindconfirm="saveDownCode" bindcancel="downCodeCancle">
+    <view class='down-code'>
+        <image mode='widthFix' src='../../images/qrcode_customer_app.png'></image>
+    </view>
+</modal>

@@ -1,0 +1,73 @@
+<!--pages/pay/payDetail/payDetail.wxml-->
+<view class='contain'>
+    <view class='head-info'>
+        <text class='time'>{{timeStr}}</text>
+        <text class='orderNo'>订单编号 {{orderNo}}</text>
+    </view>
+
+    <view class='address-group'>
+        <!-- item -->
+        <view class='address-item' wx:for="{{addressData}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+            <!-- 时间轴 -->
+            <view class='address-icon' wx:if="{{index==0}}">
+                <image class='icon' src='../../../images/address_start.png'></image>
+                <view class='line line-top'></view>
+            </view>
+            <!-- 时间轴 -->
+            <view class='address-icon' wx:elif="{{index<addressData.length-1}}">
+                <image class='icon' src='../../../images/address_passby.png'></image>
+                <view class='line'></view>
+            </view>
+            <!-- 时间轴 -->
+            <view class='address-icon' wx:else>
+                <image class='icon' src='../../../images/address_end.png'></image>
+                <view class='line line-bottom'></view>
+            </view>
+            
+            <!-- 地址内容 -->
+            <view class='address-text'>
+                <text>{{item.address}}</text>
+            </view>
+        </view>
+
+       
+    </view>
+
+    <view class='group' wx:for="{{driverData}}" wx:index="index" wx:item="item" wx:key="id">
+        <view class='item'>
+            <text class='driver-name'>{{item.driverName}}</text>
+            <text class='carNo'>{{item.truckCode}}</text>
+        </view>
+        <view class='item'>
+            <view class='title'>收款项</view>
+            <view class='content'>
+                <text wx:if="{{item.selectMoneyStr==''}}">无收款项</text>
+                <text wx:for="{{item.selectMoneyStr}}" wx:item="item" wx:key="id">{{item}}</text>
+            </view>
+        </view>
+        <view class='item'>
+            
+            <view class='title'>付款项</view>
+            <view class='content'>
+                <text wx:if="{{item.payMoneyStr==''}}">无付款项</text>
+                <text wx:for="{{item.payMoneyStr}}" wx:item="item" wx:key="id">{{item}}</text>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+<view class='totalPrice'>
+    <view class='price-item'>
+        <text>合计待收待付</text>
+        <text class='money'>￥{{totalPrice}}</text>
+    </view>
+    <view class='price-item'>
+        <text>合计待收款</text>
+        <text class='money'>￥{{collectMoney}}</text>
+    </view>
+    <view class='price-item'>
+        <text>合计待付款</text>
+        <text class='money'>￥{{payMoney}}</text>
+    </view>
+</view>

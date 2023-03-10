@@ -1,0 +1,59 @@
+<!--pages/pay/screeningResult/screeningResult.wxml-->
+<view class='not-login-contain' wx:if='{{payData==""}}'>
+    <image src='../../../images/ic_no_record.png'></image>
+    <text class='tip'>没有符合条件的结果</text>
+    <button class='btn-login' bindtap='resetScreening'>重新筛选</button>
+</view>
+
+<view class='contain' wx:else>
+    <view class='menu'>
+        <view class='menu-right'>
+            <view class='time-range' id='0' bindtap='selectSort'>
+                <view>
+                    <text>从{{timeStart}}</text>
+                    <text>到{{timeEnd}}</text>
+                </view>
+                <view>
+                    <image src='../../../images/{{sortIcon[0]?sortIcon[0]:"ic_paixu2"}}.png'></image>
+                </view>
+            </view>
+            <view id='1' bindtap='selectSort'>
+                <text>待收款</text>
+                <image src='../../../images/{{sortIcon[1]?sortIcon[1]:"ic_paixu2"}}.png'></image>
+            </view>
+            <view id='2' bindtap='selectSort'>
+                <text>待支付</text>
+                <image src='../../../images/{{sortIcon[2]?sortIcon[2]:"ic_paixu2"}}.png'></image>
+            </view>
+        </view>
+    </view>
+
+    <!--主题内容部分-->
+    <view class='content'>
+
+        <view class='item' wx:for="{{payData}}" wx:for-index="index" wx:for-item="item" wx:key="id" id='{{index}}' bindtap='payDetail'>
+            <view class='item-time'>
+                <text class='blue'>{{item.orderNoLeft}}</text>
+                <text>{{item.orderNoRight}}</text>
+            </view>
+            <text class='item-receivable'>{{item.dshk}}</text>
+            <text class='item-pay'>{{item.yfhj}}</text>
+        </view>
+
+    </view>
+
+    <view class='total'>
+        <view class='total-price'>
+            <text>合计待收待付</text>
+            <text class='yellow'>￥{{totalPrice}}</text>
+        </view>
+        <view class='total-receivable'>
+            <text>合计待收款</text>
+            <text>￥{{collectMoney}}</text>
+        </view>
+        <view class='total-pay'>
+            <text>合计待支付</text>
+            <text>￥{{payMoney}}</text>
+        </view>
+    </view>
+</view>

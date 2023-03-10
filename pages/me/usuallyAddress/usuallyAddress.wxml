@@ -1,0 +1,63 @@
+<!--pages/me/usuallyAddress/usuallyAddress.wxml-->
+<view class='not-contain' wx:if="{{addressData == ''}}">
+    <image src='../../../images/ic_no_record.png'></image>
+    <text class='tip'>保存常用路线，可以快速下单</text>
+    <button class='btn-add-address' bindtap='goToLogin' bindtap='addAddress'>添加路线</button>
+</view>
+
+<view wx:else>
+    <view class='btn-add' bindtap='addAddress'>
+        <image src='../../../images/add_luxian.png'></image>
+        <text>添加路线</text>
+    </view>
+
+    <view class='address-group' wx:for="{{addressData}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+        <view class='address-head'>
+            <image src='../../../images/ic_luxian.png'></image>
+            <text>{{item.rendTitle}}</text>
+        </view>
+        <view class='address-body'>
+            <!--item-->
+            <view class='address'>
+                <view class='address-icon address-icon-start'>
+                    <image src='../../../images/address_start.png'></image>
+                </view>
+                <view class='address-content'>
+                    <text class='name'>{{item.myTrendsList[0].name}}</text>
+                    <text class='district'>{{item.myTrendsList[0].address}} {{item.myTrendsList[0].houseNumber}}</text>
+                    <text class='person'>{{item.myTrendsList[0].person}} {{item.positionStart.phoneNumber}}</text>
+                </view>
+            </view>
+
+            <!--item-->
+            <view class='address' wx:for="{{item.myTrendsList}}" wx:key="id" wx:for-index="innerIndex" wx:for-item="innerItem" wx:if="{{innerIndex>0 && innerIndex<item.myTrendsList.length-1}}">
+                <view class='address-icon address-icon-passby'>
+                    <image src='../../../images/address_passby.png'></image>
+                </view>
+                <view class='address-content'>
+                    <text class='name'>{{innerItem.name}}</text>
+                    <text class='district'>{{innerItem.address}} {{innerItem.houseNumber}}</text>
+                    <text class='person'>{{innerItem.person}} {{innerItem.phoneNumber}}</text>
+                </view>
+            </view>
+
+            <!--item-->
+            <view class='address'>
+                <view class='address-icon address-icon-end'>
+                    <image src='../../../images/address_end.png'></image>
+                </view>
+                <view class='address-content'>
+                    <text class='name'>{{item.myTrendsList[item.myTrendsList.length-1].name}}</text>
+                    <text class='district'>{{item.myTrendsList[item.myTrendsList.length-1].address}} {{item.myTrendsList[item.myTrendsList.length-1].houseNumber}}</text>
+                    <text class='person'>{{item.myTrendsList[item.myTrendsList.length-1].person}} {{item.myTrendsList[item.myTrendsList.length-1].phoneNumber}}</text>
+                </view>
+            </view>
+        </view>
+        <view class='address-footer'>
+            <view class='btn-del' id='{{index}}' data-title='{{item.rendTitle}}' data-myid='{{item.myId}}' bindtap='removeAddress'>删除</view>
+            <view class='btn-edit' id='{{index}}' data-myid='{{item.myId}}' bindtap='editAddress'>编辑</view>
+            <view class='btn-submit active' id='{{index}}' bindtap='postOrder'>快速下单</view>
+        </view>
+    </view>
+
+</view>

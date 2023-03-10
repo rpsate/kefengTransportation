@@ -1,0 +1,62 @@
+<!--pages/order/order.wxml-->
+<!--菜单-->
+<view class='nav' hidden='{{!isLogin}}'>
+    <view class='nav-search' bindtap='search'>
+        <image src='../../images/ic_search.png'></image>
+        <text>查找</text>
+    </view>
+    <view class='nav-menu'>
+        <view class='{{navbarActive[0]}}' id='0' bindtap='selectActive'>进行中</view>
+        <view class='{{navbarActive[1]}}' id='1' bindtap='selectActive'>已完成</view>
+        <view class='{{navbarActive[2]}}' id='2' bindtap='selectActive'>已取消</view>
+    </view>
+</view>
+<!--未登录是显示-->
+<view class='not-login-contain' wx:if='{{!isLogin}}'>
+    <image src='../../images/ic_no_record.png'></image>
+    <text class='tip'>您的用车记录将在这里显示</text>
+    <button class='btn-login' bindtap='goToLogin'>立即登录</button>
+</view>
+<!--无数据时显示-->
+<view class='not-login-contain' wx:elif='{{orderData==""}}'>
+    <image src='../../images/ic_no_record.png'></image>
+    <text class='tip'>您的用车记录将在这里显示</text>
+    <button class='btn-login' bindtap='goUseCar'>去找车</button>
+</view>
+
+<view class='contain' wx:else='{{!isLogin}}'>
+    <!--group-->
+    <view class='group' wx:for="{{orderData}}" wx:index="index" wx:item="item" wx:key="id">
+        <view class='group-item'>
+            <view class='group-title'>
+                <text class='time'>{{item.createDateName}}</text>
+                <text class='state'>{{item.ordStatusName}}</text>
+            </view>
+            <view class='group-tontent'>
+                <view class='address'>
+                    <view class='icon-start'><image src='../../images/address_start.png'></image></view>
+                    <view>{{item.fhaddress}}</view>
+                </view>
+
+                <view class='address'>
+                    <view class='icon-end'><image src='../../images/address_end.png'></image></view>
+                    <view>{{item.shaddress}}</view>
+                </view>
+            </view>
+            <view class='group-footer'>
+                <view class='price'>
+                    总费用：￥{{item.yfhj}}
+                </view>
+                <view class='btn-group'>
+                    <view id="{{item.orderId}}" bindtap='goLogistics'>查看物流</view>
+                    <view id="{{item.orderId}}" bindtap='goDetail'>查看详情</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class='loading' hidden='{{!isShowLoading}}'>
+        <text>正在加载······</text>
+    </view>
+
+</view>

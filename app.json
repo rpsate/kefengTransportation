@@ -1,0 +1,71 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/order/order",
+    "pages/pay/pay",
+    "pages/pay/orderScreening/orderScreening",
+    "pages/pay/screeningResult/screeningResult",
+    "pages/pay/payDetail/payDetail",
+    "pages/me/me",
+    "pages/map/map",
+    "pages/confirmOrder/noteInfo/noteInfo",
+    "pages/confirmOrder/chooseCar/chooseCar",
+    "pages/confirmOrder/priceDetail/priceDetail",
+    "pages/confirmOrder/confirmOrder/confirmOrder",
+    "pages/order/orderDetail/orderDetail",
+    "pages/order/transportDetail/transportDetail",
+    "pages/order/evaluate/evaluate",
+    "pages/order/orderFind/orderFind",
+    "pages/order/orderFindResult/orderFindResult",
+    "pages/me/reviseInfo/reviseInfo",
+    "pages/me/usuallyAddress/usuallyAddress",
+    "pages/me/addAddress/addAddress",
+    "pages/me/officialWebsite/officialWebsite",
+    "pages/moreSettings/moreSettings",
+    "pages/moreSettings/feedback/feedback",
+    "pages/moreSettings/priceDetail/priceDetail",
+    "pages/moreSettings/userProtocol/userProtocol"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "科风速运",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#888",
+    "selectedColor": "#0783e8",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "找车",
+      "iconPath": "images/tab_car.png",
+      "selectedIconPath": "images/tab_car_active.png"
+    },
+    {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/tab_order.png",
+        "selectedIconPath": "images/tab_order_active.png"
+    },
+    {
+        "pagePath": "pages/pay/pay",
+        "text": "结算",
+        "iconPath": "images/tab_pay.png",
+        "selectedIconPath": "images/tab_pay_active.png"
+    },
+    {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "images/tab_me.png",
+        "selectedIconPath": "images/tab_me_active.png"
+    }]
+  },
+  "permission": {
+    "scope.userLocation": {
+        "desc": "科风速运需要获取您的位置信息"
+    }
+  }
+}

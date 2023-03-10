@@ -1,0 +1,72 @@
+<!--pages/map/map.wxml-->
+<view class='search'>
+    <image src='../../images/ic_search.png' class='search-icon'></image>
+    <input maxlength='16' class='search-input' value='{{keywords}}' focus='{{searchFocus}}' placeholder='搜索地址' bindfocus='searchFocus' bindinput='searchInput'></input>
+    <image src='../../images/ic_del_self.png' class='icon-close' bindtap='clearSearchInput' hidden='{{!isShowClose}}'></image>
+    <view class='btn-cancle' bindtap='SearchCancle' hidden='{{!isShowCancle}}'>取消</view>
+</view>
+<!--地图和提示栏-->
+<view class='map-contain'>
+    <map class='map' latitude='{{latitude}}' longitude='{{longitude}}' markers='{{markers}}' scale='16' show-location='true'>
+        <cover-view class='tips'>
+        <cover-view class='tips-head' hidden='{{!isShowBtnAddress}}'>
+            <cover-view class='tips-head-item' bindtap='getLocation'>
+                <cover-image src='../../images/ic_address_present.png'></cover-image>
+                <cover-view>定位当前地址</cover-view>
+            </cover-view>
+            <cover-view class='tips-head-item'>
+                <cover-image src='../../images/ic_address_luxian.png'></cover-image>
+                <cover-view bindtap='useUsuallyAddress'>使用常用路线</cover-view>
+            </cover-view>
+        </cover-view>
+            <cover-view class='tips-usually-item' id='{{index}}' wx:for='{{tipsUsually}}' wx:key='item' bindtap='chooseUsuallyAddress'>
+                <cover-image src='../../images/ic_address_history.png'></cover-image>
+                <cover-view class='tips-usually-address'>
+                    <cover-view class='tips-usually-address-main'>{{item.name}}</cover-view>
+                    <cover-view class='tips-usually-address-detail'>{{item.address}}</cover-view>
+                    <cover-view class='tips-usually-contact'>{{item.person}} {{item.phoneNumber}}</cover-view>
+                </cover-view>
+            </cover-view>
+            <!--tips-->
+            <cover-view class='tips-item' wx:for='{{tips}}' wx:key='item' bindtap='chooseAddress' data-bindex='{{index}}'>
+            <cover-image src='../../images/ic_address_map.png'></cover-image>
+            <cover-view class='tips-address' data-bindex='{{index}}'>
+                <cover-view class='tips-address-main' data-bindex='{{index}}'>{{item.name}}</cover-view>
+                <cover-view class='tips-address-detail' data-bindex='{{index}}'>{{item.province}} {{item.district}}</cover-view>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+    </map>
+</view>
+
+<view class='address-contain' hidden='{{isShowCancle}}'>
+    <view class='address'>
+        <image src='../../images/ic_address_map.png'></image>
+        <view class='address-inner' bindtap='searchFocus'>
+            <text class='address-inner-address' catchtap='searchFocus'>{{name||"请选择地址"}}</text>
+            <text class='address-inner-address-detail' catchtap='searchFocus'>{{address}}</text>
+        </view>
+    </view>
+    <view class='address-detail'>
+        <image src='../../images/ic_address_detail.png'></image>
+        <input class='address-detail-input' maxlength='16' placeholder='楼层及门牌号' value='{{houseNumber}}' bindblur='getHouseNumber'>{{houseNumber}}</input>
+    </view>
+    <view class='person-contain'>
+        <view class='person-contain-left'>
+            <view class='person'>
+                <image src='../../images/ic_address_person.png'></image>
+                <input type='text' class='person-input' maxlength='10' placeholder='联系人' value='{{person}}' bindblur='getPerson' disabled='{{contactDisabled}}'>{{person}}</input>
+            </view>
+            <view class='phone'>
+                <image src='../../images/ic_address_phone.png'></image>
+                <input type='number' maxlength='11' class='phone-input' placeholder='联系电话' value='{{phoneNumber}}' bindblur='getPhoneNumber' disabled='{{contactDisabled}}'>{{phoneNumber}}</input>
+            </view>
+        </view>
+        <view class='person-contain-right' wx:if="{{false}}">
+            <image src='../../images/ic_address_contact.png'></image>
+            <text class='contact-text'>通讯录</text>
+        </view>
+    </view>
+</view>
+
+<view class='btn-ok' bindtap='submit' hidden='{{isShowCancle}}'>确认</view>

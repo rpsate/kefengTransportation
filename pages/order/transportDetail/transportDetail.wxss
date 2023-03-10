@@ -1,0 +1,232 @@
+/* pages/order/transportDetail/transportDetail.wxss */
+page {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    width: 750rpx;
+}
+
+.contain {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 680rpx;
+    border-radius: 5px;
+}
+
+.driver {
+    height: 80px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.driver-image-contain {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.driver-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.driver-content {
+    height: 80px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.driver-content-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.driver-string {
+    padding-top: 3px;
+    font-size: 17px;
+    color: #333;
+}
+
+.driver-tip {
+    font-size: 14px;
+    color: #888;
+}
+
+.driver-content-btn {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #e5e5e5;
+}
+
+.driver-content-btn image {
+    width: 25px;
+    height: 25px;
+}
+
+.driver-content-btn text {
+    padding-top: 3px;
+    font-size: 14px;
+    color: #888;
+}
+
+.driver-remark {
+    height: 80px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.grade-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.grade-text {
+    font-size: 17px;
+    color: #333;
+    padding-right: 5px;
+}
+
+.grade image{
+    width: 14px;
+    height: 14px;
+    padding-left: 3px;
+}
+
+.remark {
+    margin-top: 3px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #888;
+}
+
+/* 路线信息 */
+.address-contain {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.address-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100rpx;
+}
+
+.time view:nth-child(1) {
+    font-size: 16px;
+    color: #888;
+}
+
+.time view:nth-child(2) {
+    font-size: 14px;
+    color: #888;
+}
+
+.time-line {
+    width: 80rpx;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+    z-index: 1;
+}
+
+.line {
+    display: block;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    height: 200px;
+    width: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.line-top {
+    top: 0;
+}
+
+.line-mid {
+    top: -100px;
+}
+
+.line-bottom {
+    bottom: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 5px;
+    width: 500rpx;
+}
+
+.title {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.tip {
+    margin: 0;
+    padding-top: 2px;
+    font-size: 14px;
+    color: #888;
+    text-indent: 4px;
+}
+
+.image-group image{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 5px;
+}

@@ -1,0 +1,109 @@
+/* pages/pay/orderScreening/orderScreening.wxss */
+view {
+    overflow-x: hidden;
+}
+
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    align-items: center;
+    width: 750rpx;
+}
+
+.active {
+    color: #0783e7;
+}
+
+.group {
+    margin-top: 6px;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.group-head {
+    padding-top: 12px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 750rpx;
+}
+
+.group-head-title {
+    font-size: 16px;
+    color: #888;
+    padding-left: 12px;
+}
+
+.group-head-btns {
+    padding-right: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #888;
+}
+
+.group-head-btns view {
+    margin-left: 12px;
+}
+
+.group-body {
+    width: 750rpx;
+    background-color: #ffffff;
+}
+
+.group-body {
+    width: 750rpx;
+    height: 50px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-body-mid {
+    font-size: 16px;
+    color: #888;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.calendar image {
+    width: 18px;
+    height: 18px;
+    padding-right: 8px;
+}
+
+.calendar picker {
+    font-size: 17px;
+    color: #333;
+}
+
+.btn {
+    width: 680rpx;
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: #0f80dd;
+}
+
+.btn:active {
+    background-color: #7dbef4;
+}

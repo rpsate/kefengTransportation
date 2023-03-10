@@ -1,0 +1,361 @@
+/**index.wxss**/
+/*导航栏*/
+page {
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    justify-content: center;
+    background-color: #f5f5f5;
+    width: 750rpx;   
+}
+
+.nav {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    height: 50px;
+    line-height: 50px;
+    font-size: 17px;
+    color: #888;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.nav-inner {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-inner view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 187.5rpx;
+}
+
+.active {
+    color: #0f80dd;
+    border-bottom: 2px solid #0f80dd;
+}
+
+/*车型*/
+.car-model {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 750rpx;
+    height: 200rpx;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    background-color: #ffffff;
+}
+
+.car-model-box {
+    position: relative;
+    display: block;
+    float: left;
+    height: 200rpx;
+    width: 610rpx;
+    background-color: #ddf0ff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.car-model-box-inner {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    height: 200rpx;
+    transition: .5s;
+}
+
+.car-model-contain {
+    display: flex;
+    flex-direction: row;
+    width: 610rpx;
+    height: 200rpx;   
+}
+
+.left,
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70rpx;
+    height: 200rpx;
+}
+
+.left image,
+.right image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.car-model-contain-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250rpx;
+}
+
+.car-image {
+    padding-top: 20rpx;
+    width: 220rpx;
+    height: 100rpx;
+}
+
+.car-text {
+    font-size: 13px;
+    line-height: 20px;
+    color: #fb8f19;
+}
+
+.car-model-contain-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 370rpx;
+}
+
+.car-model-contain-right text {
+    font-size: 13px;
+    color: #333;
+}
+
+.blue {
+    color: #0f80dd !important;
+}
+
+/*位置*/
+.position {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 750rpx;
+    background: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+
+
+.position-contain {
+    position: relative;
+    width: 750rpx;
+}
+
+.position-item-right {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.not-border-bottom {
+    border-bottom: none;
+}
+
+
+.position-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 750rpx;
+}
+
+.position-item-right {
+    display: flex;
+    flex-direction: row;
+    width: 670rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon-start-line,
+.icon-end-line,
+.icon-passby-line {
+    position: absolute;
+    display: block;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    z-index: 0;
+}
+
+.icon-start1,
+.icon-start2,
+.icon-passby1,
+.icon-passby2,
+.icon-end1,
+.icon-end2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80rpx;
+}
+
+.icon-start2,
+.icon-end2,
+.icon-passby2 {
+    height: 65px;
+}
+
+.icon-start1,
+.icon-end1,
+.icon-passby1 {
+    height: 50px;
+}
+
+
+
+.icon-start2 .icon-start-line{
+    top: 37px;
+    height: 30px;
+}
+
+.icon-start1 .icon-start-line {
+    top: 25px;
+    height: 28px;
+}
+
+.icon-end2 .icon-end-line {
+    top: 0;
+    height: 28px;
+}
+
+.icon-end1 .icon-end-line {
+    top: 0;
+    height: 28px;
+}
+
+.icon-start1 image,
+.icon-start2 image,
+.icon-end1 image,
+.icon-end2 image,
+.icon-passby1 image,
+.icon-passby2 image {
+    width: 12px;
+    height: 12px;
+    z-index: 1;
+}
+
+.icon-passby-line {
+    height: 100%;
+}
+
+image.icon-exchange2,
+image.icon-exchange1 {
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+
+image.icon-exchange2 {
+    top: 56px;
+}
+
+image.icon-exchange1 {
+    top: 41px;
+}
+
+.position-item-inner1 {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.btn-address {
+    display: flex;
+    width: 14px;
+    height: 14px;
+    padding: 15px;
+    justify-self: flex-end;
+}
+
+.position-item-inner2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65px;
+}
+
+.address-main {
+    font-size: 15px;
+    color: #333;
+}
+
+.address-detail {
+    padding-top: 3px;    
+    font-size: 11px;
+    color: #888;
+}
+
+.not-contact {
+    padding-top: 1px;    
+    font-size: 11px;
+    color: #0783e7;
+}
+
+.contact {
+    padding-top: 1px;    
+    font-size: 12px;
+    color: #888;
+}
+
+/*提示*/
+.tip {
+    padding-top: 4px;
+    padding-left: 35rpx;
+    font-size: 11px;
+    color: #aaa
+}
+
+.btn-group {
+    display: block;
+    padding-top: 20px;
+    width: 750rpx;
+}
+
+.btn-group view,
+.btn-group picker {
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 330rpx;
+    height: 44px;
+    margin-left: 30rpx;
+    font-size: 17px;
+    border-radius: 5px;    
+}
+
+.icon-yuyue {
+    width: 16px;
+    height: 16px;
+    padding-right: 10px;
+}
+
+.btn-yuyue {
+    color: #333;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+}
+
+.btn-use {
+    background-color: #0f80dd;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-use:active {
+    border: none;
+    background-color: #1a8be9;
+}

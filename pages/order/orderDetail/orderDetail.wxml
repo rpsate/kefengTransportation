@@ -1,0 +1,351 @@
+<!--pages/order/orderDetail/orderDetail.wxml-->
+<view class='nav'>
+    <view bindtap='selectActive' class='{{navbarActive[0]}}' id='0'>物流信息</view>
+    <view bindtap='selectActive' class='{{navbarActive[1]}}' id='1'>订单详情</view>
+</view>
+
+<!--订单详情-->
+<view class='contain' wx:if='{{isShowOrderDetail}}'>
+    <!--用车信息-->
+    <view class='group'>
+        <view class='group-title'>路线信息</view>
+        <view class='group-content'>
+            <!--start address-->
+            <view class='address'>
+                <view class='icon-start'>
+                    <image src='../../../images/address_start.png'></image>
+                </view>
+                <view class='address-content'>
+                    <text class='address-name'>{{orderData.lgtAddressList[0].address}}</text>
+                    <text class='address-street'>{{orderData.lgtAddressList[0].detailAddress?orderData.lgtAddressList[0].detailAddress:'未填写'}}</text>
+                    <text class='address-person'>{{orderData.lgtAddressList[0].contactorName}} {{orderData.lgtAddressList[0].contactormobile}}</text>
+                </view>
+            </view>
+
+            <!--passby address-->
+             <view class='address' wx:for='{{orderData.lgtAddressList}}' wx:for-index="index" wx:for-item="item" wx:key="id" wx:if="{{index>1}}">
+                <view class='icon-passby'>
+                    <image src='../../../images/address_passby.png'></image>
+                </view>
+                <view class='address-content'>
+                    <text class='address-name'>{{orderData.lgtAddressList[index].address}}</text>
+                    <text class='address-street'>{{orderData.lgtAddressList[index].detailAddress?orderData.lgtAddressList[index].detailAddress:'未填写'}}</text>
+                    <text class='address-person'>{{orderData.lgtAddressList[index].contactorName}} {{orderData.lgtAddressList[index].contactormobile}}</text>
+                </view>
+            </view>
+
+            <!--end address-->
+             <view class='address'>
+                <view class='icon-end'>
+                    <image src='../../../images/address_end.png'></image>
+                </view>
+                <view class='address-content'>
+                    <text class='address-name'>{{orderData.lgtAddressList[1].address}}</text>
+                    <text class='address-street'>{{orderData.lgtAddressList[1].detailAddress?orderData.lgtAddressList[1].detailAddress:'未填写'}}</text>
+                    <text class='address-person'>{{orderData.lgtAddressList[1].contactorName}} {{orderData.lgtAddressList[1].contactormobile}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!--用车信息-->
+    <view class='group'>
+        <view class='group-title'>用车信息</view>
+        <view class='group-content'>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>订单号</view>
+                <view class='group-item-right blue'>{{orderData.orderNo}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>用车时间</view>
+                <view class='group-item-right'>{{timeStr}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>车辆类型</view>
+                <view class='group-item-right'>{{orderData.truckName}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>需车数量</view>
+                <view class='group-item-right'>{{orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>订单联系人</view>
+                <view class='group-item-right'>{{orderData.lgtAddressList[0].contactorName}}({{orderData.lgtAddressList[0].contactormobile}})</view>
+            </view>
+        </view>
+    </view>
+
+    
+    <!--货物信息-->
+    <view class='group'>
+        <view class='group-title'>货物信息</view>
+        <view class='group-content'>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>货物名称</view>
+                <view class='group-item-right'>{{orderData.goodList[0].name}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>货物尺寸</view>
+                <view class='group-item-right'>{{orderData.goodList[0].length}}*{{orderData.goodList[0].width}}*{{orderData.goodList[0].height}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>货物包装</view>
+                <view class='group-item-right'>{{orderData.goodList[0].bzlxName}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>货物重量(千克)</view>
+                <view class='group-item-right'>{{orderData.goodList[0].weight}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>货物件数</view>
+                <view class='group-item-right'>{{orderData.goodList[0].num}}</view>
+            </view>
+        </view>
+    </view>
+
+    <!--备注信息-->
+    <view class='group'>
+        <view class='group-title'>
+            备注信息
+        </view>
+        <view class='group-content'>
+            <text class='group-text'>{{orderData.txt?orderData.txt:"未填写"}}</text>
+        </view>
+    </view>
+
+    <!--个人忘备录-->
+    <view class='group'>
+        <view class='group-title'>
+            个人备忘
+        </view>
+        <view class='group-content'>
+            <text class='group-text'>{{orderData.notice?orderData.notice:"未填写"}}</text>
+        </view>
+    </view>
+
+    <!--费用信息-->
+    <view class='group'>
+        <view class='group-title'>费用信息(￥)</view>
+        <view class='group-content'>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.jbyf>0}}">
+                <view class='group-item-left'>里程费</view>
+                <view class='group-item-right'>￥{{(orderData.jbyf+orderData.ce+orderData.hk)*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.weibanfei>0}}">
+                <view class='group-item-left'>尾板费</view>
+                <view class='group-item-right'>￥{{orderData.weibanfei*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.widefei>0}}">
+                <view class='group-item-left'>加宽费</view>
+                <view class='group-item-right'>￥{{orderData.widefei*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.zxf>0}}">
+                <view class='group-item-left'>装卸费</view>
+                <view class='group-item-right'>￥{{orderData.zxf*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.dff>0}}">
+                <view class='group-item-left'>垫付费</view>
+                <view class='group-item-right'>￥{{orderData.dff*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.ysf>0}}">
+                <view class='group-item-left'>延时费</view>
+                <view class='group-item-right'>￥{{orderData.ysf*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.sj>0}}">
+                <view class='group-item-left'>税 金</view>
+                <view class='group-item-right'>￥{{orderData.sj*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item' wx:if="{{orderData.dshk>0}}">
+                <view class='group-item-left'>代收费</view>
+                <view class='group-item-right'>￥{{orderData.dshk*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <!-- 回扣不显示 -->
+            <view class='group-item' wx:if="{{false>0}}">
+                <view class='group-item-left'>回 扣</view>
+                <view class='group-item-right'>￥{{orderData.hk*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <!-- 差额不显示 -->
+            <view class='group-item' wx:if="{{false}}">
+                <view class='group-item-left'>差 额</view>
+                <view class='group-item-right'>￥{{orderData.ce*orderData.needsCarCount}}</view>
+            </view>
+
+            <!--item-->
+            <view class='group-item border-top'>
+                <view class='group-item-left'>总费用</view>
+                <view class='group-item-right blue'>￥{{orderData.yfhj*orderData.needsCarCount}}</view>
+            </view>
+            <!--item-->
+            <view class='group-item'>
+                <view class='group-item-left'>支付方式</view>
+                <view class='group-item-right blue'>{{payMethodStr}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!--物流信息-->
+<view class='map-contain' wx:else style='height:{{mapHeight}}' hidden='{{isShowCancelModal}}'>
+    <map class='map' polyline='{{lines}}' markers='{{markers}}' include-points='{{points}}' latitude='{{location.latitude}}' longitude='{{location.longitude}}' hidden='{{!isShowMap}}'>
+    <!--物流信息头部-->
+        <cover-view class='info-contain'>
+            <cover-view class='info-head'>
+                <!--司机信息-->
+                <cover-view class='driver-contain' wx:if="{{tipStatus!=5 && driverData!='' && tipStatus!=1}}">
+                    <cover-view class='driver-inner'>
+                        <cover-view class='driver-inner-inner' bindtouchstart='driverTouchStart' bindtouchend='driverTouchEnd' style='left:{{driverLeft}}px'>
+                            <cover-view wx:for="{{driverData}}" wx:index="index" wx:item="item" wx:key="id" bindtap='selectDriver'  id='{{index}}' class='driver {{driverClass[index]}}'>{{item.driverName}}</cover-view>   
+                        </cover-view>
+                    </cover-view>
+                </cover-view>
+
+                <!-- 详情 -->
+                <cover-view class='info-head-contain'>
+                    <cover-view class='info-head-content'>
+                        <cover-view class='info-head-icon'>
+                            <!--头像-->
+                            <cover-image mode='aspectFill' src='../../../images/dd_sta_wait.png' wx:if="{{tipStatus==1}}"></cover-image>
+                            <!-- 司机头像 -->
+                            <cover-image mode='aspectFill' src="{{driverUrl[selectDriverId]}}" wx:if="{{tipStatus==2 || tipStatus==3 || tipStatus==4}}" binderror='onErrorDriverImage'></cover-image>
+                            <!-- 已评价时 -->
+                            <cover-image mode='aspectFill' src='../../../images/dd_sta_cancelled.png' wx:if="{{tipStatus==5}}"></cover-image>
+                        </cover-view>
+                        <cover-view class='info-head-tip'>
+                            <!--已评价-->
+                            <cover-view class='info-head-tip1' wx:if="{{tipStatus==3 || tipStatus==4}}">
+                                <text wx:if="{{tipStatus==3}}">默认评价</text>
+                                <text wx:else>您的评价</text>
+                                <cover-view class='star-box'>
+                                    <cover-image wx:for="{{rating}}" wx:index="index" wx:item="item" wx:key="id" class='star' src='../../../images/{{item}}.png'></cover-image>
+                                    
+                                </cover-view>
+                            </cover-view>
+                            <cover-view class='info-head-tip3' wx:if="{{tipStatus==3 || tipStatus==4}}">{{driverData[selectDriverId].appraiseList[0].remark?driverData[selectDriverId].appraiseList[0].remark:"未填写任何评价"}}</cover-view>
+                            <!--等待配送-->
+                            <cover-view class='info-head-tip1' wx:if="{{tipStatus==1 || tipStatus==2 || tipStatus==5}}">{{orderString}}</cover-view>
+                            <cover-view class='info-head-tip2' wx:if="{{tipStatus==1 || tipStatus==2 || tipStatus==5}}">{{orderStringTip}}</cover-view>
+                        </cover-view>
+                    </cover-view>
+                    <!--评价-->
+                    <cover-view class='info-head-evaluate' bindtap='evaluate' wx:if='{{tipStatus==3}}'>
+                        <cover-image src='../../../images/dd_status_rate.png'></cover-image>
+                        <cover-view>修改评价</cover-view>
+                    </cover-view>
+                    <!--取消订单-->
+                    <cover-view class='info-head-evaluate' bindtap='cancleOrderModal' wx:if='{{tipStatus==1}}'>
+                        <cover-image src='../../../images/ic_del_self.png'></cover-image>
+                        <cover-view>取消订单</cover-view>
+                    </cover-view>
+                    <!--加小费-->
+                    <cover-view class='info-head-evaluate' bindtap='addMoney' hidden='true'>
+                        <cover-image src='../../../images/dd_status_add_money.png'></cover-image>
+                        <cover-view>加小费</cover-view>
+                    </cover-view>
+                </cover-view>
+
+                <!-- 查看物流详情按钮 -->
+                <cover-view class='info-btn-contain' bindtap='logisticsDetail' wx:if="{{tipStatus!=5 && driverData!='' && tipStatus!=1}}">
+                    <cover-view>查看物流详情</cover-view>
+                    <cover-image src='../../../images/ic_details_db.png'></cover-image>
+                </cover-view>
+
+            </cover-view>         
+                
+        </cover-view>
+        
+    </map>
+</view>
+
+<!-- 取消原因 -->
+<modal hidden="{{!isShowCancelModal}}" title="请您填写取消原因" confirm-text="确认" cancel-text="取消" bindcancel="cancelOrderMOdal" bindconfirm="confirmCancel">  
+    <!-- <view class='add-money-modal-contain'>
+        <view class='modal-row'>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[0]}}' id='0' data-money='30.0' bindtap='selectAddMoney'></radio>
+                <text>个人原因</text>
+            </view>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[1]}}' id='1' data-money='50.0' bindtap='selectAddMoney'></radio>            
+                <text>客服原因</text>
+            </view>
+        </view>
+        <view class='modal-row'>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[2]}}' id='2' data-money='80.0' bindtap='selectAddMoney'></radio>
+                <text>司机原因</text>
+            </view>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[3]}}' id='3' data-money='100.0' bindtap='selectAddMoney'></radio>
+                <text>运力原因</text>
+            </view>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[3]}}' id='3' data-money='100.0' bindtap='selectAddMoney'></radio>
+                <text>其他原因</text>
+            </view>
+        </view>
+    
+    </view>  -->
+    <view class='cancel-radio-group'>
+        <view class='radio-item'>
+            <radio id='0' bindtap='cancelRadio' checked='{{cancelRadio[0]}}'>个人原因</radio>
+            <radio id='1' bindtap='cancelRadio' checked='{{cancelRadio[1]}}'>客服原因</radio>
+        </view>
+        <view class='radio-item'>
+            <radio id='2' bindtap='cancelRadio' checked='{{cancelRadio[2]}}'>司机原因</radio>
+            <radio id='3' bindtap='cancelRadio' checked='{{cancelRadio[3]}}'>运力原因</radio>
+        </view>
+        <view class='radio-item radio-item-left'>
+            <radio id='4' bindtap='cancelRadio' checked='{{cancelRadio[4]}}'>其他原因</radio>
+        </view>
+        <view class='text-item'>
+            <textarea maxlength='50' bindinput='cancelInputText' placeholder='请填写取消原因（必填）'></textarea>
+        </view>
+    </view>
+</modal>
+
+<!-- 加小费 -->
+<modal hidden="{{!isShowAddMoneyModal}}" title="该订单费用为218元,给司机小费:" confirm-text="确认" cancel-text="取消" bindcancel="addMoneyCancel" bindconfirm="addMoneyConfirm">  
+    <view class='add-money-modal-contain'>
+        <view class='modal-row'>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[0]}}' id='0' data-money='30.0' bindtap='selectAddMoney'></radio>
+                <text>+30.0</text>
+            </view>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[1]}}' id='1' data-money='50.0' bindtap='selectAddMoney'></radio>            
+                <text>+50.0</text>
+            </view>
+        </view>
+        <view class='modal-row'>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[2]}}' id='2' data-money='80.0' bindtap='selectAddMoney'></radio>
+                <text>+80.0</text>
+            </view>
+            <view class='add-money-item'>
+                <radio checked='{{addMoneyRadio[3]}}' id='3' data-money='100.0' bindtap='selectAddMoney'></radio>
+                <text>+100.0</text>
+            </view>
+        </view>
+    
+    </view> 
+</modal>

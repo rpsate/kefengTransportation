@@ -1,0 +1,100 @@
+/* pages/login/login.wxss */
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    width: 750rpx;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    width: 100%;    
+}
+
+view {
+    display: block;
+    justify-content: center;
+}
+
+.logo {
+    width: 240rpx;
+    height: 80rpx;
+    margin: 20px;
+}
+
+.form-row {
+    background-color: #ffffff;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: row;
+    width: 700rpx;
+    height: 40px;
+    
+}
+
+.form-item-caption {
+    width: 180rpx;
+    text-align: left;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.form-item-verification {
+    border-top: 1px solid #e5e5e5;
+}
+
+.text-phone {
+    height: 40px;
+    width: 320rpx;
+    font-size: 16px;
+}
+
+.text-verification {
+    height: 40px;
+    width: 520rpx;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+.verification {
+    width: 200rpx;
+    line-height: 40px;
+    font-size: 12px;
+    text-align: right;
+    color: #0783e8;
+    border: none;
+    background: none;
+}
+
+button[disabled].verification {
+    color: #888888;
+    background: none;
+    border: none;
+}
+
+.verification::after {
+    border: none;
+}
+
+.btn-login {
+    margin-top: 30px;
+    width: 700rpx;
+    background-color: #1a8be9;
+    color: #ffffff;
+    max-height: 95rpx;
+    line-height: 95rpx;
+    font-size: 16px;
+}
+
+.btn-login:active {
+    background-color: #7dbef4;
+}
+
+button[disabled].btn-login {
+    background-color: #7dbef4;
+    color: #fefefe;
+}

@@ -1,0 +1,101 @@
+<!--pages/me/addAddress/addAddress.wxml-->
+<view class='group'>
+    <view class='group-title'>路线名称</view>
+    <view class='group-content'>
+        <input type='text' maxlength='15' placeholder='请输入简洁、方便理解的路线名称，15字以内' placeholder-class='placeholder-address-name' class='address-name' bindblur='inputAddressName' value='{{addressName}}'></input>
+    </view>
+</view>
+
+<view class='address-group'>
+    <view class='address-group-title'>地点及联系人</view>
+    <view class='address-content'>
+
+    <!--position start-->
+        <view>
+            <!--item1-->
+            <view class='address-item1' wx:if='{{!positionStart.isGetPosition}}'>
+                <view class='address-item-icon1 address-item-icon1-start'>
+                    <image src='../../../images/address_start.png'></image>
+                </view>
+                <view class='address-item-content1'>
+                    <text bindtap='getStartPosition'>从哪儿出发</text>
+                </view>
+            </view>
+            <!--item2-->
+            <view class='address-item2' wx:else>
+                <view class='address-item-icon2 address-item-icon2-start'>
+                    <image src='../../../images/address_start.png'></image>
+                </view>
+                <view class='address-item-content2'>
+                    <view bindtap='getStartPosition'>
+                        <text class='name'>{{positionStart.name}}</text>
+                        <text class='district'>{{positionStart.address}}</text>
+                        <text class='person' wx:if='{{isGetContact}}'>{{positionStart.person}} {{positionStart.phoneNumber}}</text>
+                        <text class='not-contact' wx:else>未填写联系人信息</text>
+                    </view>
+                    
+                </view>
+            </view>
+        </view>
+
+        <!--passby-->
+        <view wx:for='{{addressArray}}' wx:key='id'>
+            <view class='address-item1' wx:if='{{!addressArray[index].isGetPosition}}'>
+                <view class='address-item-icon1 address-item-icon1-passby'>
+                        <image src='../../../images/address_passby.png'></image>
+                </view>
+                <view class='address-item-content1'>
+                    <text bindtap='getPosition' id='{{index}}'>要经过哪儿</text>
+                    <image src='../../../images/address_remove.png' class='btn-remove' bindtap='removePosition' id='{{index}}'></image>
+                </view>
+            </view>
+
+            <!--passby get address-->
+            <view class='address-item2' wx:else>
+                <view class='address-item-icon2 address-item-icon2-passby'>
+                    <image src='../../../images/address_passby.png'></image>
+                    <image src='../../../images/address_exchange.png' class='btn-exchange' bindtap='exchange' id='{{index}}'></image>
+                </view>
+                <view class='address-item-content2'>
+                    <view bindtap='getPosition' id='{{index}}'>
+                        <text class='name'>{{addressArray[index].name}}</text>
+                        <text class='district'>{{addressArray[index].address}}</text>
+                        <text class='person'>{{addressArray[index].person}} {{addressArray[index].phoneNumber}}</text>
+                    </view>
+                    <image src='../../../images/address_remove.png' class='btn-remove' bindtap='removePosition' id='{{index}}'></image>
+                </view>
+            </view>
+        </view>
+
+        <!--position end-->
+        <view>
+            <view class='address-item1' wx:if='{{!positionEnd.isGetPosition}}'>
+                <view class='address-item-icon1 address-item-icon1-end'>
+                    <image src='../../../images/address_end.png'></image>
+                </view>
+                <view class='address-item-content1'>
+                    <text bindtap='getEndPosition'>要发往哪儿</text>
+                    <image src='../../../images/address_add.png' class='btn-add' bindtap='addPosition'></image>
+                </view>
+            </view>
+
+            <!--end item2-->
+            <view class='address-item2' wx:else>
+                <view class='address-item-icon2 address-item-icon2-end'>
+                    <image src='../../../images/address_end.png'></image>
+                </view>
+                <view class='address-item-content2'>
+                    <view bindtap='getEndPosition'>
+                        <text class='name'>{{positionEnd.name}}</text>
+                        <text class='district'>{{positionEnd.address}}</text>
+                        <text class='person'>{{positionEnd.person}} {{positionEnd.phoneNumber}}</text>
+                    </view>
+                    <image src='../../../images/address_add.png' class='btn-remove' bindtap='addPosition' id='{{index}}'></image>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class='btn-submit' bindtap='saveAddress'>{{btnText}}</view>

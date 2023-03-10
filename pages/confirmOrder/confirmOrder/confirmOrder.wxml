@@ -1,0 +1,233 @@
+<!--pages/confirmOrder/comfirmOrder/comfirmOrder.wxml-->
+<!--用车信息-->
+<view class='group-title'>用车信息</view>
+<view class='group'>
+    <view class='group-item'>
+        <text>用车时间</text>
+        <view>
+            <picker mode='multiSelector' range='{{picker}}' value="{{selectPicker}}" bindchange='changePicker'>{{timeStr}}</picker>
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>车辆类型</text>
+        <view>
+            <text bindtap='selectCar'>{{car}}</text>
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>用车数量</text>
+        <view bindtap='writeCarNumber'>
+            <text wx:if="{{carNumber == ''}}" class='seats'>请输入</text>
+            <text wx:else>{{carNumber}}</text>
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+    <view class='group-item' hidden='{{!isShowPlate}}'>
+        <text>带尾板（￥10）</text>
+        <view>
+            <switch bindchange='addPlate' color='#f39700' checked='{{isAddPlate}}'></switch>
+        </view>
+    </view>
+    <view class='group-item' hidden='{{carType[selectCarId].isAddWidth!=1}}'>
+        <text>加宽至2.3米（￥10）</text>
+        <view>
+            <switch bindchange='addWidth' color='#f39700' checked="{{isAddWidth}}"></switch>
+        </view>
+    </view>
+</view>
+
+<!--货物信息-->
+<view class='group-title'>货物信息</view>
+<view class='group'>
+    <view class='group-item'>
+        <text>货物名称</text>
+        <view bindtap='writeName'>
+            <text wx:if="{{goodsName != ''}}">{{goodsName}}</text>
+            <text wx:else class='seats'>请填写</text>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>货物尺寸</text>
+        <view bindtap='writeSize'>
+            <view class='size-tip-box'>
+                <text wx:if="{{goodsSize != ''}}">{{goodsSize[0]}}*{{goodsSize[1]}}*{{goodsSize[2]}}</text>
+                <text wx:else class='seats'>长*宽*高</text>
+                <text class='size-tip' hidden='{{!isOverflow}}'>当前车型为({{nowSize[0]}}*{{nowSize[1]}}*{{nowSize[2]}}),可能装不下</text>
+            </view>
+            
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>货物包装</text>
+        <view>
+            <picker mode="selector" range='{{packages}}' bindchange='selectPackage'>{{selectPackage}}</picker>
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>货物重量（千克）</text>
+        <view bindtap='writePackagesWeight'>
+            <view class='weight-box'>
+                <text wx:if="{{packagesWeight == ''}}" class='seats'>请输入</text>
+                <text wx:else>{{packagesWeight}}</text>
+                <text class='size-tip' hidden='{{packagesWeight<=carType[selectCarId].carryingCapacity*1000 || packagesWeight==""}}'>该车载重为{{carType[selectCarId].carryingCapacity}}吨,该货物超重了</text>
+            </view>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>货物件数</text>
+        <view bindtap='writePackagesNumber'>
+            <text wx:if="{{packagesNumber == ''}}" class='seats'>请输入</text>
+            <text wx:else>{{packagesNumber}}</text>
+        </view>
+    </view>
+</view>
+<!--订单联系人-->
+<view class='group-title'>订单联系人</view>
+<view class='group'>
+    <view class='group-item'>
+        <text>联系人</text>
+        <view>
+            <text>{{positionStart.person}}</text>
+        </view>
+    </view>
+    <view class='group-item'>
+        <text>电话</text>
+        <view>
+            <text>{{positionStart.phoneNumber}}</text>
+        </view>
+    </view>
+</view>
+
+<!--备注信息-->
+<view class='group-title'>备注信息</view>
+<view class='group'>
+    <view class='group-item-note' bindtap='writeNote'>
+        <text wx:if="{{note!=''}}">{{note}}</text>
+        <text wx:else class='seats'>给司机捎句话，如装车、货物，装卸等···</text>
+        <view>
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+</view>
+
+<!--个人备注信息-->
+<view class='group-title'>个人备注(仅个人可见)</view>
+<view class='group'>
+    <view class='group-item-note' bindtap='writePersonNote'>
+        <text wx:if="{{personNote != ''}}">{{personNote}}</text>
+        <text wx:else class='seats'>请输入</text>
+        <view>
+            <image src='../../../images/ic_more.png'></image>
+        </view>
+    </view>
+</view>
+<view class='note-tip'>
+    可填公司订单号等关键词，方便搜索订单，该信息不会发给司机
+</view>
+
+<!--价格-->
+<view class='price-contain'>
+    <view class='price'>￥{{totalPriceX}}</view>
+    <view class='btn-price' bindtap='priceDetail'>价格细明</view>
+</view>
+
+<!--提交按钮-->
+<view class='btn' bindtap='useCar'>确认用车</view>
+
+<!--model-->
+<!--商品名称-->
+<modal hidden="{{!isShowNameModel}}" title="请输入货物名称" confirm-text="确认" cancel-text="取消" bindcancel="writeNameCancel" bindconfirm="writeNameConfirm">  
+    <input maxlength='15' type='text' placeholder="请输入内容" bindinput='inputGoodsName' class='name-model-input'/> 
+</modal>
+
+<!--尺寸-->
+<modal hidden="{{!isShowSizeModel}}" title="货物载重需要的空间" confirm-text="确认" cancel-text="取消" bindcancel="writeSizeCancel" bindconfirm="writeSizeConfirm">  
+    <view class='size-model-input'>
+        <input maxlength='4' type='number' placeholder='长' bindinput='inputGoodsLength'></input>
+        <text>*</text>
+        <input maxlength='4' type='number' placeholder='宽' bindinput='inputGoodsWidth'></input>
+        <text>*</text>
+        <input maxlength='4' type='number' placeholder='高' bindinput='inputGoodsHeigth'></input>
+    </view>
+    <view class='size-model-tip'>
+        注意:货物所需空间不应超过当前车型的内空尺寸(<text>{{nowSize[0]}}</text>分米*<text>{{nowSize[1]}}</text>分米*<text>{{nowSize[2]}}</text>分米)
+    </view>
+</modal>
+
+<!--备注-->
+<modal hidden="{{!isShowPersonNoteModel}}" title="请输入个人备注" confirm-text="确认" cancel-text="取消" bindcancel="writePersonNoteCancel" bindconfirm="writePersonNoteConfirm">  
+    <input maxlength='50' type='text' placeholder="请输入内容" bindinput='inputPersonNote' class='note-model-input'/> 
+</modal>
+
+<!--货物重量-->
+<modal hidden="{{!isPackagesWeight}}" title="请输入货物重量" confirm-text="确认" cancel-text="取消" bindcancel="canclePackagesWeight" bindconfirm="confirmPackagesWeight">  
+    <input maxlength='6' type='number' min="0" placeholder="请输入货物重量" bindinput='inputPackagesWeight' class='packages-model-input'/> 
+    <view class='weight-model-tip'>
+        注意:该车所能承受重量为<text>{{carType[selectCarId].carryingCapacity}}</text>吨。
+    </view>
+</modal>
+
+<!--货物件数-->
+<modal hidden="{{!isPackagesNumber}}" title="请输入货物件数" confirm-text="确认" cancel-text="取消" bindcancel="canclePackagesNumber" bindconfirm="confirmPackagesNumber">  
+    <input maxlength='6' type='number' min="0" placeholder="请输入货物件数" bindinput='inputPackagesNumber' class='packages-model-input'/> 
+</modal>
+
+<!--用车数量-->
+<modal hidden="{{!isShowCarNumberModel}}" title="用车数量" confirm-text="确认" cancel-text="取消" bindcancel="writeCarNumberCancel" bindconfirm="writeCarNumberConfirm">  
+    <input maxlength='4' type='number' value='{{carNumber}}' placeholder="请输入用车数量" bindinput='inputCarNumber' class='car-number-input'/> 
+</modal>
+
+<!--底部弹出菜单-->
+<view class='sheet' wx:if='{{isShowSheet}}' bindtap='hiddenSheet'></view>
+
+    <view class='sheet-menu' wx:if='{{isShowSheet}}'>
+        <view class='sheet-price' >￥{{totalPriceX}}</view>
+        <view class='sheet-group'>
+            <!--item-->
+            <view class='sheet-item'>
+                <view class='sheet-item-content'>
+                    <image src='../../../images/pay_cash.png' class='sheet-icon'></image>
+                    <view class='sheet-item-text'>
+                        <text class='sheet-text-caption'>现金</text>
+                        <text class='sheet-text-tip'>装货后，发货方现金支付给司机</text>
+                    </view>
+                </view>
+                <view class='sheet-item-radio'>
+                    <radio checked='{{radio[0]}}' id='0' bindtap='radioChange'></radio>
+                </view>
+            </view>
+            <!--item-->
+            <view class='sheet-item'>
+                <view class='sheet-item-content'>
+                    <image src='../../../images/pay_huidan.png' class='sheet-icon'></image>
+                    <view class='sheet-item-text'>
+                        <text class='sheet-text-caption'>回单付</text>
+                        <text class='sheet-text-tip'>发货方收到物流回单后支付</text>
+                    </view>
+                </view>
+                <view class='sheet-item-radio'>
+                    <radio checked='{{radio[1]}}' id='1' bindtap='radioChange'></radio>
+                </view>
+            </view>
+            <!--item-->
+            <view class='sheet-item'>
+                <view class='sheet-item-content'>
+                    <image src='../../../images/pay_month.png' class='sheet-icon'></image>
+                    <view class='sheet-item-text'>
+                        <text class='sheet-text-caption'>月结</text>
+                        <text class='sheet-text-tip'>长期合作用户可按月结算</text>
+                    </view>
+                </view>
+                <view class='sheet-item-radio'>
+                    <radio checked='{{radio[2]}}' id='2' bindtap='radioChange'></radio>
+                </view>
+            </view>
+            
+        </view>
+        <!--按钮-->
+        <text class='btn {{btnDisabled}}' bindtap='confirmUseCar'>叫车</text>
+    </view>

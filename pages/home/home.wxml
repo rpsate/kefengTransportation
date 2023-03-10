@@ -1,0 +1,7 @@
+<!--pages/home/home.wxml-->
+<view class='contain'>
+    <view class='logo'>
+        <image src='../../images/logo_launch.png'></image>
+    </view>
+    <text class='slogan'>让城市配送变得更简单</text>
+</view>

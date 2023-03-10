@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class='row'>
+    <image class='logo' src='../../images/logo_login.png'></image>
+</view>
+<view class='row form-row'>
+    <form class='form'>
+    <view class='form-item'>
+        <text class='form-item-caption'>手机号</text>
+        <input type='number' bindinput='phoneInput' class='text-phone' maxlength='11' placeholder='请输入手机号' value='{{phone}}'></input>
+        <button class='verification' bindtap='getVerification' disabled='{{verificationDisableFlag}}'>{{textGetVerification}}</button>
+    </view>
+    <view class='form-item form-item-verification'>
+        <text class='form-item-caption' tap-bindtap='getVerification'>验证码</text>
+        <input type='number' bindinput='verificationInpur' class='text-verification' maxlength='4' placeholder='请输入验证码'></input>
+    </view>
+</form>
+</view>
+<view>
+    <button class='btn-login' disabled='{{btnDisableFlag}}' bindtap='login'>登录</button>
+</view>

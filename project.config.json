@@ -1,0 +1,207 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx7c317db1225bf97d",
+	"projectname": "%E7%A7%91%E9%A3%8E%E9%80%9F%E8%BF%90",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 26,
+			"list": [
+				{
+					"id": 0,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "me",
+					"pathName": "pages/me/me",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "logs",
+					"pathName": "pages/logs/logs",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "map",
+					"pathName": "pages/map/map",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "noteInfo",
+					"pathName": "pages/confirmOrder/noteInfo/noteInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "chooseCar",
+					"pathName": "pages/confirmOrder/chooseCar/chooseCar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "priceDetail",
+					"pathName": "pages/confirmOrder/priceDetail/priceDetail",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "confirmOrder",
+					"pathName": "pages/confirmOrder/confirmOrder/confirmOrder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "orderDetail",
+					"pathName": "pages/order/orderDetail/orderDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "evaluate",
+					"pathName": "pages/order/evaluate/evaluate",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "orderFind",
+					"pathName": "pages/order/orderFind/orderFind",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "reviseInfo",
+					"pathName": "pages/me/reviseInfo/reviseInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "usuallyAddress",
+					"pathName": "pages/me/usuallyAddress/usuallyAddress",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addAddress",
+					"pathName": "pages/me/addAddress/addAddress",
+					"query": ""
+				},
+				{
+					"id": 16,
+					"name": "moreSettings",
+					"pathName": "pages/moreSettings/moreSettings",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "feedback",
+					"pathName": "pages/moreSettings/feedback/feedback",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "moreSeting priceDetail",
+					"pathName": "pages/moreSettings/priceDetail/priceDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "protocol",
+					"pathName": "pages/moreSettings/userProtocol/userProtocol",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test/test",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "website",
+					"pathName": "pages/me/officialWebsite/officialWebsite",
+					"query": ""
+				},
+				{
+					"id": 22,
+					"name": "普通编译测试",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": "1096"
+				},
+				{
+					"id": -1,
+					"name": "transsportDetail",
+					"pathName": "pages/order/transportDetail/transportDetail",
+					"query": ""
+				},
+				{
+					"id": 24,
+					"name": "payDetail",
+					"pathName": "pages/pay/payDetail/payDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "payFind",
+					"pathName": "pages/pay/orderScreening/orderScreening",
+					"query": ""
+				}
+			]
+		}
+	}
+}

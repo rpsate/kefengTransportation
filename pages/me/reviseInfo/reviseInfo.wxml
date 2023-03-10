@@ -1,0 +1,68 @@
+<!--pages/me/reviseInfo/reviseInfo.wxml-->
+
+<text class='list-group-title'>个人信息</text>
+<view class='list-group'>
+        <!--item-->
+        <view class='list-head-item border-bottom'>
+            <view class='list-head-item-title'>
+                <text>头像</text>
+            </view>
+            <view class='list-head-item-content' bindtap='selcetHeadImage'>
+                <image mode='aspectFill' class='head-image' src="{{headImage}}" binderror='onErrorHeadImage'>
+                </image>
+
+                <image src='../../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+
+        <!--item-->
+        <view class='list-item border-bottom'>
+            <view class='list-item-title'>
+                <text>称呼</text>
+            </view>
+            <view class='list-item-content' bindtap='writeName'>
+                <text wx:if="{{name == ''}}">未填写</text>
+                <text wx:else>{{name}}</text>
+                <image src='../../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+
+        <!--item-->
+        <view class='list-item border-bottom'>
+            <view class='list-item-title'>
+                <text>性别</text>
+            </view>
+            <view class='list-item-content'>
+                <picker mode="selector" range="{{pickerSex}}" value='{{sexId}}' bindchange='selectSex'>
+                    <text wx:if="{{sex == ''}}">请选择</text>
+                    <text wx:else>{{sex}}</text>
+                </picker>
+                <image src='../../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+
+        <!--item-->
+        <view class='list-item'>
+            <view class='list-item-title'>
+                <text>手机号</text>
+            </view>
+            <view class='list-item-content'>
+                <text wx:if="{{phoneNumber == ''}}">未填写</text>
+                <text wx:else>{{phoneNumber}}</text>
+                <image src='../../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+    </view>
+
+    <view class='btn' bindtap='saveInfo'>保存</view>
+
+<!--modal-->
+<!--称呼-->
+<modal hidden="{{!isShowNameModal}}" title="请输入个人称呼" confirm-text="确认" cancel-text="取消" bindcancel="writeNameCancle" bindconfirm="writeNameConfirm">  
+    <input type='text' maxlength='10' placeholder="请输入内容" bindblur='inputName' value='{{name}}' class='modal-input'/> 
+</modal>
+
+<!--手机号码-->
+<modal hidden="{{!isShowPhoneNumberModal}}" title="请输入电话号码" confirm-text="确认" cancel-text="取消" bindcancel="writePhoneNumberCancle" bindconfirm="writePhoneNumberConfirm">  
+    <input type='number' maxlength='11' placeholder="请输入电话号码" bindblur='inputPhoneNumber' value='{{phoneNumber}}' class='modal-input'/> 
+</modal>

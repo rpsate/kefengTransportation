@@ -1,0 +1,188 @@
+/* pages/pay/payDetail/payDetail.wxss */
+view {
+    overflow-x: hidden;
+}
+
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    width: 750rpx;
+}
+
+.contain {
+    padding-bottom: 70px;
+}
+
+.head-info {
+    margin-top: 20px;
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+}
+
+.time {
+    font-size: 17px;
+    color: #333;
+}
+
+.orderNo {
+    padding-top: 2px;
+    font-size: 16px;
+    color: #888;
+}
+
+/**地址**/
+.address-group {
+    padding-top: 4px;
+    display: flex;
+    flex-direction: column;
+    width: 750rpx;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding-bottom: 4px;
+}
+
+.address-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.address-icon {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+}
+
+.icon {
+    width: 14px;
+    height: 14px;
+    z-index: 1;
+}
+
+.line {
+    position: absolute;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    height: 200px;
+    width: 0;
+    z-index: 0;
+}
+
+.address-text {
+    height: 30px;
+    line-height: 25px;
+    font-size: 17px;
+    color: #333;
+}
+
+.line-top {
+    top: 0;
+}
+
+.line-bottom {
+    bottom: 0;
+}
+
+/* 收费页面 */
+.group {
+    margin-top: 20px;
+    width: 750rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item:nth-last-child(n+2) {
+    border-right: 1px solid #e5e5e5;
+}
+
+.driver-name {
+    font-size: 18px;
+    color: #333;
+}
+
+.carNo {
+    padding-top: 4px;
+    font-size: 14px;
+    color: #888;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.title {
+    height: 40px;
+    font-size: 17px;
+    color: #333;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 25px;
+    font-size: 15px;
+    color: #666;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex: 1;
+}
+
+/* 底部价格栏 */
+.totalPrice {
+    height: 50px;
+    width: 750rpx;
+    background-color: #ddf0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+}
+
+.price-item {
+    flex: 1;
+    display: flex;
+    justify-content: cener;
+    align-items: center;
+    flex-direction: column;
+}
+
+.price-item text {
+    font-size: 15px;
+    color: #0783e8;
+}
+
+.money {
+    padding-top: 2px;
+    font-size: 14px !important;
+    color: #ff7200 !important;
+}

@@ -1,0 +1,49 @@
+<!--pages/moreSettings/priceDetail/priceDetail.wxml-->
+<view class='nav'>
+    <view class='{{navActive[0]}}' bindtap='selectActive' id='0'>4.2米高栏</view>
+    <view  class='{{navActive[1]}}' id='1' bindtap='selectActive'>
+        4.2米车厢
+    </view>
+</view>
+
+<view class='contain'>
+    <view class='table'>
+        <view class='table-row bold'>
+            <text>费用细明</text>
+            <text>收费标准</text>
+            <text>说明</text>
+        </view>
+        <view class='table-row'>
+            <text>基本运费</text>
+            <text>120元</text>
+            <text>5公里以内</text>
+        </view>
+        <view class='table-row'>
+            <text>里程运费</text>
+            <text>5元/公里</text>
+            <text>超出5公里部分</text>
+        </view>
+        <view class='table-row'>
+            <text>进城费-核心城区</text>
+            <text>60元</text>
+            <text></text>
+        </view>
+        <view class='table-row'>
+            <text>进城费-一般城区</text>
+            <text>40元</text>
+            <text></text>
+        </view>
+        <view class='table-row'>
+            <text>延时费</text>
+            <text>15元</text>
+            <text>装卸各1小时，每30分钟15元</text>
+        </view>
+        <view class='table-row'>
+            <text>加点</text>
+            <text>30元/点</text>
+            <text>多点送货，30元/点</text>
+        </view>
+    </view>
+
+    <view class='tip'>（注：货运行驶路径与常规路径里程计算有一定差异，xxxxxxxxx相关说明；搬运费用与司机协商达成，司机额外收取；xxxx）</view>
+</view>

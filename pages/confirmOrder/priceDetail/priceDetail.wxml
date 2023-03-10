@@ -1,0 +1,31 @@
+<!--pages/confirmOrder/priceDetail/priceDetail.wxml-->
+
+    <view class='head'>
+        <view class='total-price'>
+            <text class='total-price-title'>总费用:</text>
+            <text class='total-price-content'>￥{{totalPriceX}}</text>
+        </view>
+        <text>全程约{{totalKilometre}}Km</text>
+    </view>
+
+    <view class='price-detail'>
+        
+        <view class='price-detail-item' wx:if="{{prices[0]>0}}">
+            <text>里程费</text>
+            <text>￥{{prices[0]}}</text>
+        </view>
+        <view class='price-detail-item' wx:if="{{prices[1]>0}}">
+            <text>加宽费</text>
+            <text>￥{{prices[1]}}</text>
+        </view>
+        <view class='price-detail-item' wx:if="{{prices[2]>0}}">
+            <text>尾板费</text>
+            <text>￥{{prices[2]}}</text>
+        </view>
+    </view>
+
+    <text class='tip'>
+        当前里程费仅供参考，实际里程费根据实际行驶路线计算；
+        若产生高速费用、停车费和搬运费，请用户额外支付；
+        若涉及等候费、请与司机按收费标准结算
+    </text>

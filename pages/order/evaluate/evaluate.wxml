@@ -1,0 +1,17 @@
+<!--pages/order/evaluate/evaluate.wxml-->
+<view class='contain'>
+    <text class='tip'>请为本次评价打分</text>
+    <image class='head-image' src="{{driverUrl}}" binderror='onErrorDriverImage'></image>
+    <text class='name'>{{driverInfo.driverName}}</text>
+    <text class='title'>电话：{{driverInfo.driverMobile}}</text>
+    <view class='ratingBar'>
+        <view class='star-group'>
+            <image wx:for='{{rating}}' wx:key='id' src='../../../images/{{item}}.png' bindtap='setRating' id='{{index}}'></image>
+        </view>
+        <text class='star-text'>{{ratingText}}</text>
+    </view>
+</view>
+
+<textarea class='textarea' maxlength='50' placeholder='对于此次服务，有哪些想吐槽和夸奖的？' bindinput='getText'></textarea>
+
+<view class='btn' bindtap='evaluate'>提交评价</view>

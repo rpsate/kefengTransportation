@@ -1,0 +1,226 @@
+/* pages/me/addAddress/addAddress.wxss */
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    align-items: center;
+    width: 750rpx;
+}
+
+.group,
+.address-group {
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.group-title,
+.address-group-title {
+    padding-top: 12px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    font-size: 14px;
+    color: #888;
+}
+
+.group-content {
+    width: 750rpx;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    height: 50px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.placeholder-address-name {
+    font-size: 14px;
+}
+
+.address-name {
+    height: 50px;
+    width: 710rpx;
+    font-size: 16px;
+    color: #333;
+}
+
+.address-content {
+    width: 750rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.address-content image {
+    width: 16px;
+    height: 16px;
+    z-index: 1;
+}
+
+.address-item1,
+.address-item2 {
+    width: 750rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.address-item1 {
+    height: 50px;
+}
+
+.address-item2 {
+    height: 70px;
+}
+
+.address-item-icon1,
+.address-item-icon2 {
+    width: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.address-item-icon1 {
+    height: 50px;
+}
+
+.address-item-icon2 {
+    height: 70px;
+}
+
+.address-item-icon1 image,
+.address-item-icon2 image {
+    z-index: 100;
+}
+
+.address-item-icon1-start::after,
+.address-item-icon1-passby::after,
+.address-item-icon1-end::after,
+.address-item-icon2-start::after,
+.address-item-icon2-passby::after,
+.address-item-icon2-end::after {
+    content: "";
+    position: absolute;
+    display: block;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    z-index: 0;
+}
+
+.address-item-icon1-start::after {
+    height: 25px;
+    bottom: 0;
+}
+
+.address-item-icon1-passby::after {
+    height: 50px;
+    top: 0;
+}
+
+.address-item-icon1-end::after {
+    height: 25px;
+    top: 0;
+}
+
+.address-item-icon2-start::after {
+    height: 35px;
+    bottom: 0;
+}
+
+.address-item-icon2-passby::after {
+    height: 70px;
+    top: 0
+}
+
+.address-item-icon2-end::after {
+    height: 35px;
+    top: 0;
+}
+
+.btn-exchange {
+    position: absolute;
+    bottom: -9px;
+    width: 20px;
+    height: 20px;
+}
+
+.address-item-content1,
+.address-item-content2 {
+    font-size: 16px;
+    color: #888;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.address-item-content1 {
+    height: 50px;
+    line-height: 50px;
+}
+
+.address-item-content1 text {
+    flex: 1;
+}
+
+.address-item-content2 {
+    height: 70px;
+    line-height: 50px;
+}
+
+.address-item-content2>view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.address-item-content2 text {
+    padding-top: 3px;
+}
+
+.name {
+    line-height: 20px;
+    font-size: 17px;
+    color: #333;
+}
+.district,
+.person,
+.not-contact {
+    padding-top: 2px;
+    color: #888;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.not-contact {
+    color: #0783e7 !important;
+}
+
+.btn-add,
+.btn-remove {
+    padding: 15px;
+}
+
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 680rpx;
+    height: 50px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #1a8be9;
+    border-radius: 4px;
+}
+
+.btn-submit:active {
+    background-color: #7dbef4;
+}

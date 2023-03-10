@@ -1,0 +1,78 @@
+/* pages/moreSettings/moreSettings.wxss */
+view {
+    overflow-x: hidden;
+}
+
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    width: 750rpx;
+}
+
+/*contain*/
+.list-group {
+    margin-top: 18px;
+    width: 750rpx;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 732rpx;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 12px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list-item-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    padding-left: 6px;
+    font-size:18px;
+    color: #333;
+}
+
+.list-item-title>text {
+    padding-left: 3px;
+}
+
+.list-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    padding-right: 14px;
+    font-size:14px;
+    color: #aaa;
+}
+
+.list-item-content>.icon {
+    width: 15px;
+    height: 15px;
+    padding-left: 6px;
+}
+
+.red-dot  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fa4b4a;
+    height: 18px;
+    width: 18px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+}
+

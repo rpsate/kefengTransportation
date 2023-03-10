@@ -1,0 +1,6 @@
+/* pages/me/officialWebsite/officialWebsite.wxss */
+page,
+.website {
+    width: 750rpx;
+    height: 100%;
+}

@@ -1,0 +1,51 @@
+<!--pages/moreSettings/moreSettings.wxml-->
+<view class='list-group'>
+        <!--item-->
+        <view class='list-item' bindtap='gotoProtocol'>
+            <view class='list-item-title'>
+                <text>用户协议</text>
+            </view>
+            <view class='list-item-content'>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+
+        <!--item-->
+        <view class='list-item' bindtap='gotoPriceDetail' wx:if="{{false}}">
+            <view class='list-item-title'>
+                <text>收费标准</text>
+            </view>
+            <view class='list-item-content'>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>
+ </view>
+
+
+ <view class='list-group'>
+        <!--item-->
+        <view class='list-item' bindtap='gotoFeedback'>
+            <view class='list-item-title'>
+                <text>意见反馈</text>
+            </view>
+            <view class='list-item-content'>
+                <view class='red-dot'wx:if="{{feedbackCount>0}}">{{feedbackCount}}</view>
+                <image src='../../images/ic_more.png' class='icon'></image>
+            </view>
+        </view>        
+ </view>
+
+<view class='list-group'>
+        <!--item-->
+        <view class='list-item' bindtap='logout'>
+            <view class='list-item-title'>
+                <text>注销</text>
+            </view>
+            <view class='list-item-content'>
+                
+            </view>
+        </view>        
+ </view>
+
+
+

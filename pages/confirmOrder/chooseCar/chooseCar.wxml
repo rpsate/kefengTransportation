@@ -1,0 +1,21 @@
+<!--pages/confirmOrder/chooseCar/chooseCar.wxml-->
+<view class='car-contain' wx:for="{{allCar}}" wx:index="index" wx:item="item" wx:key="id">
+    <view class='title'>
+        {{item.truckName}}
+    </view>
+    <view class='content'>
+        <view class='content-inner' bindtap='chooseCar' id='{{index}}'>
+            <view class='car-image'>
+                <image src='{{item.carImg}}' binderror='onErrorSetImage' id='{{index}}'></image>
+                <text class='car-text'>起步价：{{item.startFare}}</text>
+            </view>
+            <view class='car-info'>
+                <text>载货重量:<text class='blue'>{{item.carryingCapacity}}吨</text>以内</text>
+                   <text>载货体积:<text class='blue'>{{item.volume}}方</text>以内</text>
+                   <text>内空长度:<text class='blue'>{{item.length/10}}米</text></text>
+                   <text>内空宽高:<text class='blue'>{{item.width/10}}</text>(可加至2.2米)</text>
+                   <text>尾板:<text class='blue'>{{item.coamingCar==0?"无":"可选"}}</text></text>
+            </view>
+        </view>
+    </view>
+</view>

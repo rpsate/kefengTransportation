@@ -1,0 +1,32 @@
+/* pages/moreSettings/userProtocol/userProtocol.wxss */
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    align-items: center;
+    padding-bottom: 20px;
+    width: 750rpx;
+}
+
+.group {
+    width: 650rpx;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 18px;
+    color: #333;
+}
+
+.content {
+    margin-top: 10px;
+}
+
+.p {
+    text-indent: 28px;
+    font-size: 15px;
+    line-height: 22px;
+    color: #888; 
+}

@@ -1,0 +1,21 @@
+<!--pages/confirmOrder/noteInfo/noteInfo.wxml-->
+
+<textarea placeholder='给司机捎句话，如更车，货物，装卸等' maxlength='100' class='note-info' bindinput='noteInfoInput' value='{{noteInfo}}'>
+    <text class='note-info-tip'>(输入{{countWords}}/100字)</text>
+</textarea>
+
+<button class='btn-confirm' bindtap='submit'>确认</button>
+
+<view class='note-contain'>
+    <view>
+        <view bindtap='addTip' data-tip='一人跟车'>一人跟车</view>
+        <view bindtap='addTip' data-tip='两人跟车'>两人跟车</view>
+        <view bindtap='addTip' data-tip='需要搬运'>需要搬运(价格与司机商议)</view>
+    </view>
+    <view>
+        <view bindtap='addTip' data-tip='一装两卸'>一装两卸</view>
+        <view bindtap='addTip' data-tip='两装一卸'>两装一卸</view>
+        <view bindtap='addTip' data-tip='两装两卸'>两装两卸</view>
+        <view bindtap='addTip' data-tip='多装多卸'>多装多卸</view>
+    </view>
+</view>

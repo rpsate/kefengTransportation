@@ -1,0 +1,41 @@
+<!--pages/order/orderFind/orderFind.wxml-->
+<!--订单其实时间-->
+<view class='group'>
+    <view class='group-head'>
+        <view class='group-head-title'>订单起始时间</view>
+        <view class='group-head-btns'>
+            <view class='{{timeMenu[0]}}' id='0' bindtap='selectTime'>近一月</view>
+            <view class='{{timeMenu[1]}}' id='1' bindtap='selectTime'>本月</view>
+            <view class='{{timeMenu[2]}}' id='2' bindtap='selectTime'>上月</view>
+        </view>
+    </view>
+    <view class='group-body'>
+        <view class='calendar'>
+            <image src='../../../images/ic_calendar.png'></image>
+            <picker mode="date" bindchange="setTimeStart" value='{{timeStart}}'>{{timeStart}}</picker>
+        </view>
+        <view class='group-body-mid'>至</view>
+        <view class='calendar'>
+            <image src='../../../images/ic_calendar.png'></image>
+            <picker mode="date" bindchange='setTimeEnd' value='{{timeEnd}}'>{{timeEnd}}</picker>
+        </view>
+    </view>
+</view>
+
+<!--关键词搜索-->
+<view class='group'>
+    <view class='group-head'>
+        <view class='group-head-title'>关键词搜索</view>
+    </view>
+    <view class='group-body'>
+        <view class='search-contain'>
+            <view class='icon-search'>
+                <image src='../../../images/ic_search.png'></image>
+            </view>
+            <input maxlength='15' type='text' placeholder='请输入关键词' class='search-input' bindinput='getKeyWords'></input>
+        </view>
+    </view>
+</view>
+<text class='tip'>可搜索订单号，收货人，货物名称，个人备忘录等关键词</text>
+
+<view class='btn' bindtap='search'>查找</view>

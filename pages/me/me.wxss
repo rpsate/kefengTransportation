@@ -1,0 +1,214 @@
+/* pages/me/me.wxss */
+view {
+    overflow-x: hidden;
+}
+
+page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    width: 750rpx;
+}
+
+/*head*/
+.not-login-contain,
+.head-box {
+    width: 750rpx;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: #0f80de;
+    width: 750rpx;
+}
+
+.head-image {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 70rpx;
+    margin-top: 18px;
+    margin-left: 18px;
+    margin-bottom: 22px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.head-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.down-code,
+.down-code image {
+    width: 100%;
+}
+
+.head-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 18px;
+    flex: 1;
+}
+
+.head-info-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 18px;
+    height: 140rpx;
+}
+
+.head-info-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 26px;
+}
+
+.head-info-icon image {
+    width: 20px;
+    height: 20px;
+}
+
+.head-tip {
+    color: #ededed;
+    font-size: 18px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+}
+
+.head-btn-login {
+    font-size: 14px;
+    color: #ededed;
+    padding: 5px 12px;
+    border-radius: 2px;
+    border: 1px solid #ededed;
+}
+
+.head-name {
+    font-size: 20px;
+    color: #efefef;
+}
+
+.head-phone {
+    font-size: 14px;
+    color: #dedede;
+    padding-top: 3px;
+}
+
+.head-company {
+    font-size: 14px;
+    color: #dedede;
+    padding-top: 3px;
+}
+
+.head-words {
+    height: 50px;
+    background-color: #2c94e9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 18px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.head-words-text text {
+    display: block;
+    float: left;
+}
+
+.head-words image {
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    padding-right: 4px;
+}
+
+.yellow {
+    color: #f39700;
+    font-size: 14px !important;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+/*contain*/
+.list-group {
+    margin-top: 18px;
+    width: 750rpx;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 732rpx;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 12px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list-item-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    padding-left: 6px;
+    font-size:18px;
+    color: #333;
+}
+
+.list-item-title>text {
+    padding-left: 8px;
+}
+
+.list-item-title>.icon {
+    text-align: center;    
+    width: 16px;
+    height: 16px;
+}
+
+.list-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    padding-right: 14px;
+    font-size:16px;
+    color: #aaa;
+}
+
+.list-item-content>.icon {
+    width: 15px;
+    height: 15px;
+    padding-left: 6px;
+}
+
+.red-dot  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fa4b4a;
+    height: 18px;
+    width: 18px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+}

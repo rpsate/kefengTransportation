@@ -1,0 +1,124 @@
+<!--index.wxml-->
+  <view class='nav'>
+    <view class='nav-inner' bindtouchmove='moveNav' bindtouchend='moveNavEnd' style='left:{{navLeft}}rpx'>
+        <view class='{{navbarActive[index]}}' wx:for="{{carType}}" wx:index="index" wx:item="item" wx:key="id" id='{{index}}' bindtap='selectActive'>{{item.truckName}}</view>
+    </view>
+  </view>
+  <view class='car-model'>
+    <view class='left'>
+        <image src='../../images/ic_prev.png' bindtap='prev'></image>
+    </view>
+    <view class='car-model-box'>
+        <view class='car-model-box-inner' style='left:{{left}};width:{{carModelWidth}}'>
+        
+                <view class='car-model-contain' wx:for="{{carType}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+                    <view class='car-model-contain-left'>
+                        <image class='car-image' src="{{item.carImg}}" binderror='onErrorSetImage' id='{{index}}'></image>
+                        <view class='car-text'>{{priceStr?priceStr:'起步价:'+item.startFare}}</view>
+                    </view>
+                    <view class='car-model-contain-right'>
+                        <text>载货重量:<text class='blue'>{{item.carryingCapacity}}吨</text>以内</text>
+                        <text>载货体积:<text class='blue'>{{item.volume}}方</text>以内</text>
+                        <text>内空长度:<text class='blue'>{{item.length/10}}米</text></text>
+                        <text>内空宽高:<text class='blue'>{{item.width/10}}米</text><text wx:if="{{item.isAddWidth==1}}">(可加至2.3米)</text></text>
+                        <text>尾板:<text class='blue'>{{item.coamingCar==0?"无":"可选"}}</text></text>
+                    </view>
+                </view>
+        </view>
+    </view>
+    <view class='right' bindtap='more'>
+        <image src='../../images/ic_more.png'>
+        </image>
+    </view>
+  </view>
+
+  <view class='position'>
+    <view class='position-contain'>
+            <!--起点-->
+            <view class='position-item'>
+                <view class='icon-start2' wx:if='{{positionStart.isGetPosition}}'>
+                    <image src='../../images/address_start.png'></image>
+                    <view class='icon-start-line'></view>
+                </view>
+                <view class='icon-start1' wx:else>
+                    <image src='../../images/address_start.png'></image>
+                    <view class='icon-start-line'></view>
+                </view>
+                <view class='position-item-right' bindtap='getStartPosition'>
+                    <view wx:if='{{positionStart.isGetPosition}}' class='position-item-inner2'>
+                        <text class='address-main'>{{positionStart.name}}</text>
+                        <text class='address-detail'>{{positionStart.address}} {{positionStart.houseNumber}}</text>
+                        <text class='contact' wx:if='{{isGetContact}}'>{{positionStart.person}} {{positionStart.phoneNumber}}</text>
+                        <text class='not-contact' wx:else>未填写联系人信息</text>
+                    </view>
+                    <view wx:else class='position-item-inner1'>
+                        从哪儿出发
+                    </view>
+                </view>
+            </view>
+            <!--中间路程-->
+            <view wx:for='{{addressArray}}' wx:key='index'>
+                <view class='position-item'>
+                    <view class='icon-passby2' wx:if='{{item.isGetPosition}}'>
+                          <image src='../../images/address_passby.png'></image>
+                          <image src='../../images/address_exchange.png' class='icon-exchange2' catchtap='exchange' id='{{index}}'></image>
+                          <view class='icon-passby-line'></view>
+                    </view>
+                    <view class='icon-passby1' wx:else>
+                          <image src='../../images/address_passby.png'></image>
+                          <image src='../../images/address_exchange.png' class='icon-exchange1' catchtap='exchange' id='{{index}}'></image>
+                           <view class='icon-passby-line'></view>
+                    </view>
+                    <view class='position-item-right' bindtap='getPosition' id='{{index}}'>
+                        <view wx:if='{{item.isGetPosition}}' class='position-item-inner2'>
+                            <text class='address-main'>{{item.name}}</text>
+                            <text class='address-detail'>{{item.address}} {{item.houseNumber}}</text>
+                            <text class='contact'>{{item.person}} {{item.phoneNumber}}</text>
+                          </view>
+                          <view wx:else class='position-item-inner1'>
+                             途径哪儿
+                          </view>
+                          <image src='../../images/address_remove.png' class='btn-address' catchtap='removeAddress' data-bindex='{{index}}'>
+                        </image>
+                        </view>
+                </view>
+            </view>
+            <!--终点-->
+            <view class='position-item'>
+                <view class='icon-end2' wx:if='{{positionEnd.isGetPosition}}'>
+                    <image src='../../images/address_end.png'></image>
+                    <view class='icon-end-line'></view>
+                </view>
+                <view class='icon-end1' wx:else>
+                    <image src='../../images/address_end.png'></image>
+                    <view class='icon-end-line'></view>
+                </view>
+                <view class='position-item-right not-border-bottom' bindtap='getEndPosition'>
+                    <view wx:if='{{positionEnd.isGetPosition}}' class='position-item-inner2'>
+                        <text class='address-main'>{{positionEnd.name}}</text>
+                        <text class='address-detail'>{{positionEnd.address}} {{positionEnd.houseNumber}}</text>
+                        <text class='contact'>{{positionEnd.person}} {{positionEnd.phoneNumber}}</text>
+                    </view>
+                     <view wx:else class='position-item-inner1'>
+                       要发往哪里
+                    </view>
+                    <image src='../../images/address_add.png' class='btn-address' catchtap='addAddress'>
+                </image>
+                </view>
+        
+        </view>
+    </view>
+</view>
+<!--提示-->
+<view hidden='{{!showTip}}' class='tip'>
+    途径顺序影响里程运费计算，请按顺序填写
+</view>
+
+<!--按钮-->
+<view class='btn-group'>
+    <picker mode='multiSelector' range='{{picker}}' value="{{selectPicker}}" bindchange='changePicker' class='btn-yuyue'>
+        <image src='../../images/icon_yuyue.png' class='icon-yuyue'></image>
+        预约用车
+    </picker>
+    <view class='btn-use' bindtap='useCar'>立即用车</view>
+</view>

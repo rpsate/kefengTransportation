@@ -1,0 +1,6 @@
+{
+    "navigationBarBackgroundColor": "#0f80de",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "待收待付",
+    "enablePullDownRefresh": true
+}
